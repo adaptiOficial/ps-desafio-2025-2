@@ -53,9 +53,9 @@ export function DialogInformationProperty({
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Informações do livro</DialogTitle>
+          <DialogTitle>Informações do imóvel</DialogTitle>
           <DialogDescription>
-            Visualize as informações detalhadas do livro abaixo.
+            Visualize as informações detalhadas do imóvel abaixo.
           </DialogDescription>
         </DialogHeader>
         <FormFieldsProperty property={property} readOnly />

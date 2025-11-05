@@ -38,11 +38,11 @@ export function DialogCreateProperty({ children }: DialogCreatePropertyProps) {
     if (error) {
       setError(error)
       toast({
-        title: 'Não foi possível criar o livro!',
+        title: 'Não foi possível criar o imóvel!',
       })
     } else {
       toast({
-        title: 'Livro criado com sucesso!',
+        title: 'Imóvel criado com sucesso!',
       })
       setOpen(false)
     }
@@ -53,9 +53,9 @@ export function DialogCreateProperty({ children }: DialogCreatePropertyProps) {
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Adicionar livro</DialogTitle>
+          <DialogTitle>Adicionar imóvel</DialogTitle>
           <DialogDescription>
-            Preencha as informações do novo livro abaixo e clique em
+            Preencha as informações do novo imóvel abaixo e clique em
             &rdquo;Salvar&rdquo; para incluí-lo no sistema.
           </DialogDescription>
         </DialogHeader>

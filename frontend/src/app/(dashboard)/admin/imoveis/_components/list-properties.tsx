@@ -37,7 +37,7 @@ export default async function ListProperties() {
         <DialogCreateProperty>
           <Button size="sm">
             <LuPlusCircle />
-            Novo livro
+            Novo imóvel
           </Button>
         </DialogCreateProperty>
       </DashboardContainer>
@@ -58,6 +58,7 @@ export default async function ListProperties() {
                 <TableCell>
                   <TabbleCellImage src={property.image} />
                 </TableCell>
+                
                 <TableCell>{property.title}</TableCell>
                 <TableCell>{property.amount}</TableCell>
                 <TableCell>{property.category.name}</TableCell>
@@ -84,7 +85,7 @@ export default async function ListProperties() {
             ))}
           </TableBody>
           {!properties.length && (
-            <TableCaption>Nenhum livro encontrado.</TableCaption>
+            <TableCaption>Nenhum imóvel encontrado.</TableCaption>
           )}
         </Table>
       </DashboardContainer>

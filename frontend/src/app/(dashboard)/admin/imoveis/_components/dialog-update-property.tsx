@@ -58,11 +58,11 @@ export function DialogUpdateProperty({ id, children }: DialogUpdatePropertyProps
     if (error) {
       setError(error)
       toast({
-        title: 'Não foi possível editar o livro!',
+        title: 'Não foi possível editar o imóvel!',
       })
     } else {
       toast({
-        title: 'Livro editado com sucesso!',
+        title: 'Imóvel editado com sucesso!',
       })
       setOpen(false)
     }
