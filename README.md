@@ -1,4 +1,4 @@
-# PS Desafio 2025/1
+# PS Desafio 2025/2
 
 ## Iniciando projeto
 
