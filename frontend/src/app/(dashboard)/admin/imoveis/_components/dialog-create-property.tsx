@@ -8,18 +8,18 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/dialog'
-import FormFieldsVehicle from './form-fields-vehicle'
-import { createVehicle } from '@/actions/vehicle'
+import FormFieldsProperty from './form-fields-property'
+import { createProperty } from '@/actions/property'
 import { filterFormData } from '@/services/filter-form-data'
 import { useEffect, useState } from 'react'
 import { useToast } from '@/components/use-toast'
 import { ResponseErrorType } from '@/services/api'
 
-interface DialogCreateVehicleProps {
+interface DialogCreatePropertyProps {
   children: React.ReactNode
 }
 
-export function DialogCreateVehicle({ children }: DialogCreateVehicleProps) {
+export function DialogCreateProperty({ children }: DialogCreatePropertyProps) {
   const [open, setOpen] = useState<boolean>()
   const [error, setError] = useState<ResponseErrorType | null>(null)
   const { toast } = useToast()
@@ -33,7 +33,7 @@ export function DialogCreateVehicle({ children }: DialogCreateVehicleProps) {
   const submit = async (form: FormData) => {
     const newForm = await filterFormData(form)
 
-    const { error } = await JSON.parse(await createVehicle(newForm))
+    const { error } = await JSON.parse(await createProperty(newForm))
 
     if (error) {
       setError(error)
@@ -60,7 +60,7 @@ export function DialogCreateVehicle({ children }: DialogCreateVehicleProps) {
           </DialogDescription>
         </DialogHeader>
         <form action={submit}>
-          <FormFieldsVehicle error={error} />
+          <FormFieldsProperty error={error} />
         </form>
       </DialogContent>
     </Dialog>

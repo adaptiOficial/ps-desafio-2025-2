@@ -10,36 +10,36 @@ import {
   TableRow,
 } from '@/components/dashboard/table'
 import { api } from '@/services/api'
-import { vehicleType } from '@/types/vehicle'
+import { propertyType } from '@/types/property'
 import { Button } from '@/components/button'
 import { LuInfo, LuPen, LuPlusCircle, LuTrash } from 'react-icons/lu'
-import { DialogUpdateVehicle } from './dialog-update-vehicle'
-import { DialogVehicleDelete } from './dialog-delete-vehicle'
-import { DialogInformationVehicle } from './dialog-information-vehicle'
-import { DialogCreateVehicle } from './dialog-create-vehicle'
+import { DialogUpdateProperty } from './dialog-update-property'
+import { DialogPropertyDelete } from './dialog-delete-property'
+import { DialogInformationProperty } from './dialog-information-property'
+import { DialogCreateProperty } from './dialog-create-property'
 
-export default async function ListVehicles() {
+export default async function ListProperties() {
   const { response } = null // requisicao para api
 
   if (!response) {
     return (
       <DashboardContainer className="text-destructive">
-        Não foi possível obter os usuários.
+        Não foi possível obter os imóveis.
       </DashboardContainer>
     )
   }
 
-  const vehicles: vehicleType[] = response
+  const properties: propertyType[] = response
 
   return (
     <>
       <DashboardContainer className="flex h-min justify-between space-x-0 gap-y-2.5 max-sm:flex-col">
-        <DialogCreateVehicle>
+        <DialogCreateProperty>
           <Button size="sm">
             <LuPlusCircle />
             Novo livro
           </Button>
-        </DialogCreateVehicle>
+        </DialogCreateProperty>
       </DashboardContainer>
       <DashboardContainer>
         <Table>
@@ -53,35 +53,37 @@ export default async function ListVehicles() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {vehicles?.map((vehicle: vehicleType) => (
-              <TableRow key={vehicle.id}>
+            {properties?.map((property: propertyType) => (
+              <TableRow key={property.id}>
                 <TableCell>
-                  <TabbleCellImage src={vehicle.image} />
+                  <TabbleCellImage src={property.image} />
                 </TableCell>
-                <TableCell>{vehicle.title}</TableCell>
-                <TableCell>{vehicle.amount}</TableCell>
-                <TableCell>{vehicle.category.name}</TableCell>
+                <TableCell>{property.title}</TableCell>
+                <TableCell>{property.amount}</TableCell>
+                <TableCell>{property.category.name}</TableCell>
+                {/* demais propriedades de propertyType */}
+                
                 <TableCell className="flex justify-end gap-2">
-                  <DialogInformationVehicle id={vehicle.id}>
+                  <DialogInformationProperty id={property.id}>
                     <Button variant="default-inverse" size="icon">
                       <LuInfo />
                     </Button>
-                  </DialogInformationVehicle>
-                  <DialogUpdateVehicle id={vehicle.id}>
+                  </DialogInformationProperty>
+                  <DialogUpdateProperty id={property.id}>
                     <Button variant="secondary-inverse" size="icon">
                       <LuPen />
                     </Button>
-                  </DialogUpdateVehicle>
-                  <DialogVehicleDelete id={vehicle.id}>
+                  </DialogUpdateProperty>
+                  <DialogPropertyDelete id={property.id}>
                     <Button variant="destructive-inverse" size="icon">
                       <LuTrash />
                     </Button>
-                  </DialogVehicleDelete>
+                  </DialogPropertyDelete>
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
-          {!vehicles.length && (
+          {!properties.length && (
             <TableCaption>Nenhum livro encontrado.</TableCaption>
           )}
         </Table>

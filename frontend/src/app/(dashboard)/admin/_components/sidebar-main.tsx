@@ -11,10 +11,13 @@ import {
   SidebarHeaderLogo,
   UserDropdown,
 } from '@/components/dashboard/sidebar'
-import { LuBookOpen, LuHome, LuLayers, LuLogOut, LuUsers } from 'react-icons/lu'
+import { LuHome, LuLogOut, LuUsers } from 'react-icons/lu'
 import { DropdownMenuItem } from '@/components/dropdown-menu'
 import { signOut, useSession } from 'next-auth/react'
 import logo from '@/assets/img/logo.jpeg'
+import { MdOutlineHomeWork } from "react-icons/md";
+import { TbCategory } from "react-icons/tb";
+import { VscGraph } from "react-icons/vsc";
 
 export function SidebarMain() {
   const session = useSession()
@@ -28,19 +31,19 @@ export function SidebarMain() {
       </SidebarHeader>
       <SidebarNav>
         <SidebarNavLink href="/admin">
-          <LuHome />
-          <SidebarNavLinkLabel>Home</SidebarNavLinkLabel>
+          <VscGraph />
+          <SidebarNavLinkLabel>Dashboard</SidebarNavLinkLabel>
         </SidebarNavLink>
         <SidebarNavLink href="/admin/usuarios">
           <LuUsers />
           <SidebarNavLinkLabel>Usuários</SidebarNavLinkLabel>
         </SidebarNavLink>
-        <SidebarNavLink href="/admin/veiculos">
-          <LuBookOpen />
-          <SidebarNavLinkLabel>Veiculos</SidebarNavLinkLabel>
+        <SidebarNavLink href="/admin/imoveis">
+          <MdOutlineHomeWork />
+          <SidebarNavLinkLabel>Imóveis</SidebarNavLinkLabel>
         </SidebarNavLink>
         <SidebarNavLink href="/admin/categorias">
-          <LuLayers />
+          <TbCategory />
           <SidebarNavLinkLabel>Categorias</SidebarNavLinkLabel>
         </SidebarNavLink>
       </SidebarNav>

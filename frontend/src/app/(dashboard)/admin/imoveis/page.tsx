@@ -5,7 +5,7 @@ import {
   DashboardMain,
 } from '@/components/dashboard/dashboard-items'
 import { FaCarAlt } from "react-icons/fa";
-import ListVehicles from './_components/list-vehicles'
+import ListProperties from './_components/list-properties';
 import { Suspense } from 'react'
 
 export default async function Page() {
@@ -14,15 +14,15 @@ export default async function Page() {
       <DashboardHeader>
         <DashboardHeaderTitle>
         <FaCarAlt />
-          Veículos
+          Imóveis
         </DashboardHeaderTitle>
         <DashboardHeaderDescription>
-          Cadastre, edite, visualize e exclua veículos.
+          Cadastre, edite, visualize e exclua imóveis.
         </DashboardHeaderDescription>
       </DashboardHeader>
       <DashboardMain>
         <Suspense>
-          <ListVehicles />
+          <ListProperties />
         </Suspense>
       </DashboardMain>
     </>

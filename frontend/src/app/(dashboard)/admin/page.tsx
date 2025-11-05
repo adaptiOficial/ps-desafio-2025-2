@@ -4,14 +4,14 @@ import {
   DashboardHeaderTitle,
   DashboardMain,
 } from '@/components/dashboard/dashboard-items'
-import { LuHome } from 'react-icons/lu'
+import { BsGraphUp } from "react-icons/bs";
 
 export default function Page() {
   return (
     <>
       <DashboardHeader>
         <DashboardHeaderTitle>
-          <LuHome />
+          <BsGraphUp />
           Home
         </DashboardHeaderTitle>
         <DashboardHeaderDescription>

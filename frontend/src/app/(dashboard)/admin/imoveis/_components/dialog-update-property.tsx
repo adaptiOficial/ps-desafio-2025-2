@@ -8,35 +8,35 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/dialog'
-import FormFieldsVehicle from './form-fields-vehicle'
-import { updateVehicle } from '@/actions/vehicle'
+import FormFieldsProperty from './form-fields-property'
+import { updateProperty } from '@/actions/property'
 import { filterFormData } from '@/services/filter-form-data'
 import { useEffect, useState } from 'react'
 import { useToast } from '@/components/use-toast'
-import { vehicleType } from '@/types/vehicle'
+import { propertyType } from '@/types/property'
 import { ResponseErrorType, api } from '@/services/api'
 
-interface DialogUpdateVehicleProps {
+interface DialogUpdatePropertyProps {
   id: string
   children: React.ReactNode
 }
 
-export function DialogUpdateVehicle({ id, children }: DialogUpdateVehicleProps) {
-  const [vehicle, setVehicle] = useState<vehicleType | null>(null)
+export function DialogUpdateProperty({ id, children }: DialogUpdatePropertyProps) {
+  const [property, setProperty] = useState<propertyType | null>(null)
   const [open, setOpen] = useState<boolean>()
   const [error, setError] = useState<ResponseErrorType | null>(null)
   const { toast } = useToast()
 
   useEffect(() => {
     const requestData = async () => {
-      const { response } = await api<vehicleType>('GET', `/vehicles/${id}`)
+      const { response } = await api<propertyType>('GET', `/properties/${id}`)
 
       if (response) {
-        setVehicle(response)
+        setProperty(response)
       } else {
-        setVehicle(null)
+        setProperty(null)
         toast({
-          title: 'Livro  não encontrado!',
+          title: 'Imóvel  não encontrado!',
         })
         setOpen(false)
       }
@@ -45,7 +45,7 @@ export function DialogUpdateVehicle({ id, children }: DialogUpdateVehicleProps) 
     requestData()
 
     return () => {
-      setVehicle(null)
+      setProperty(null)
       setError(null)
     }
   }, [id, open, toast])
@@ -53,7 +53,7 @@ export function DialogUpdateVehicle({ id, children }: DialogUpdateVehicleProps) 
   const submit = async (form: FormData) => {
     const newForm = await filterFormData(form)
 
-    const { error } = null // requisicao para api
+    const { error } = null 
 
     if (error) {
       setError(error)
@@ -73,14 +73,14 @@ export function DialogUpdateVehicle({ id, children }: DialogUpdateVehicleProps) 
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Editar livro</DialogTitle>
+          <DialogTitle>Editar imóvel</DialogTitle>
           <DialogDescription>
-            Atualize as informações do livro abaixo e clique em
+            Atualize as informações do imóvel abaixo e clique em
             &quot;Salvar&quot; para aplicar as alterações.
           </DialogDescription>
         </DialogHeader>
         <form action={submit}>
-          <FormFieldsVehicle error={error} vehicle={vehicle} />
+          <FormFieldsProperty error={error} property={property} />
         </form>
       </DialogContent>
     </Dialog>

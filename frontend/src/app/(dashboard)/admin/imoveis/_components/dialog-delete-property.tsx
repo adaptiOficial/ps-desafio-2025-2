@@ -1,6 +1,6 @@
 'use client'
 
-import { destroyVehicle } from '@/actions/vehicle'
+import { destroyProperty } from '@/actions/property'
 import { Button } from '@/components/button'
 import {
   Dialog,
@@ -14,17 +14,17 @@ import {
 import { useToast } from '@/components/use-toast'
 import { useState } from 'react'
 
-interface DialogCreateVehicleProps {
+interface DialogCreatePropertyProps {
   id: string
   children: React.ReactNode
 }
 
-export function DialogVehicleDelete({ id, children }: DialogCreateVehicleProps) {
+export function DialogPropertyDelete({ id, children }: DialogCreatePropertyProps) {
   const [open, setOpen] = useState<boolean>()
   const { toast } = useToast()
 
   const submit = async () => {
-    const { error } = await JSON.parse(await destroyVehicle(id))
+    const { error } = await JSON.parse(await destroyProperty(id))
 
     if (error) {
       toast({

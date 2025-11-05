@@ -8,34 +8,34 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/dialog'
-import FormFieldsVehicle from './form-fields-vehicle'
-import { vehicleType } from '@/types/vehicle'
+import FormFieldsProperty from './form-fields-property'
+import { propertyType } from '@/types/property'
 import { api } from '@/services/api'
 import { useEffect, useState } from 'react'
 import { useToast } from '@/components/use-toast'
 
-interface DialogInformationVehicleProps {
+interface DialogInformationPropertyProps {
   id: string
   children: React.ReactNode
   isInformation?: boolean
 }
 
-export function DialogInformationVehicle({
+export function DialogInformationProperty({
   id,
   children,
-}: DialogInformationVehicleProps) {
-  const [vehicle, setVehicle] = useState<vehicleType | null>(null)
+}: DialogInformationPropertyProps) {
+  const [property, setProperty] = useState<propertyType | null>(null)
   const [open, setOpen] = useState<boolean>()
   const { toast } = useToast()
 
   useEffect(() => {
     const requestData = async () => {
-      const { response } = null // requisicao para api
+      const { response } = null
 
       if (response) {
-        setVehicle(response)
+        setProperty(response)
       } else {
-        setVehicle(null)
+        setProperty(null)
         toast({
           title: 'Veículo não encontrado!',
         })
@@ -45,7 +45,7 @@ export function DialogInformationVehicle({
 
     requestData()
 
-    return () => setVehicle(null)
+    return () => setProperty(null)
   }, [id, open, toast])
 
   return (
@@ -58,7 +58,7 @@ export function DialogInformationVehicle({
             Visualize as informações detalhadas do livro abaixo.
           </DialogDescription>
         </DialogHeader>
-        <FormFieldsVehicle vehicle={vehicle} readOnly />
+        <FormFieldsProperty property={property} readOnly />
       </DialogContent>
     </Dialog>
   )
